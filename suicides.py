@@ -4,8 +4,8 @@ from matplotlib import style
 import os
 
 # Read from csv files
-suicides = pd.read_csv(os.path.dirname(__file__) + "/suicides.csv")
-pop = pd.read_csv(os.path.dirname(__file__) + "/population.csv")
+suicides = pd.read_csv(os.path.dirname(__file__) + "/data/suicides.csv")
+pop = pd.read_csv(os.path.dirname(__file__) + "/data/population.csv")
 pop = pop.drop(columns=["LOCATION", "Sex", "Age", "VAR", "Variant", "TIME", "Unit", "PowerCode", "Reference Period Code", "Reference Period", "Flag Codes", "Flags"])
 pop = pop[(pop["SEX"] == "TT") & (pop["AGE"] == "D199G5TT")]
 pop = pop.groupby(["Country", "Time"])
@@ -15,7 +15,7 @@ suicides_yr_gender = suicides.groupby(["year", "sex"])
 suicides_country = suicides.groupby(["country"])
 
 # Select country
-country = "Italy"
+country = "United States"
 
 nation = suicides_country.get_group(country)
 nation_yr = nation.groupby(["year"])
