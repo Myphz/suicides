@@ -7,6 +7,7 @@ The datasets contain data from 1985 to 2015 regarding more than 100 countries.
 ## Screenshots
 ### United States
 Data regarding US
+![](images/usanimated.gif)
 ![](images/us1.png)
 ![](images/us2.png)
 ![](images/us3.png)
