@@ -25,7 +25,7 @@ suicides_yr_gender = suicides.groupby(["year", "sex"])
 suicides_country = suicides.groupby(["country"])
 
 # Select country
-country = sys.argv[-1]
+country = sys.argv[-1].lower().capitalize()
 try:
     nation = suicides_country.get_group(country)
 except:
