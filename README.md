@@ -17,6 +17,15 @@ Data regarding 100+ countries
 ![](images/world1.png)
 ![](images/world2.png)
 
+## Usage
+If you wish, you can use this project to get data from any country./
+Install all the dependencies listed below and execute the suicides.py file with the following syntax:/
+```python suicides.py COUNTRY_NAME```
+
+## Dependencies
+- Pandas
+- Matplotlib
+
 ## Source
 - https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016
 - https://stats.oecd.org/Index.aspx?DataSetCode=POP_PROJ
