@@ -26,6 +26,6 @@ Install all the dependencies listed below and execute the suicides.py file with 
 - Pandas
 - Matplotlib
 
-## Source
+## Sources
 - https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016
 - https://stats.oecd.org/Index.aspx?DataSetCode=POP_PROJ
