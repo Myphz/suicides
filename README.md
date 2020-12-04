@@ -18,8 +18,8 @@ Data regarding 100+ countries
 ![](images/world2.png)
 
 ## Usage
-If you wish, you can use this project to get data from any country./
-Install all the dependencies listed below and execute the suicides.py file with the following syntax:/
+If you wish, you can use this project to get data from any country.\
+Install all the dependencies listed below and execute the suicides.py file with the following syntax:\
 ```python suicides.py COUNTRY_NAME```
 
 ## Dependencies
