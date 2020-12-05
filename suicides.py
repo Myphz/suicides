@@ -25,7 +25,9 @@ suicides_yr_gender = suicides.groupby(["year", "sex"])
 suicides_country = suicides.groupby(["country"])
 
 # Select country
-country = sys.argv[-1].lower().capitalize()
+country = sys.argv[-1]
+country = " ".join([e.lower().capitalize() for e in country.split()])
+
 try:
     nation = suicides_country.get_group(country)
 except:
@@ -54,6 +56,7 @@ plt.legend(loc="upper right", fontsize=11)
 fullscreen()
 plt.show()
 
+
 # Call animation
 run(["python", "./animation.py", country])
 
@@ -68,10 +71,25 @@ nation_total_suicide_ratio = [nation_yr.get_group(yr)["suicides_no"].sum() / tot
 nation_male_suicide_ratio = [m / t * 100 for m, t in zip(nation_male_suicides_per_yrs, nation_suicides_per_yrs)]
 nation_female_suicide_ratio = [m / t * 100 for m, t in zip(nation_female_suicides_per_yrs, nation_suicides_per_yrs)]
 
+# Get denominators to calculate suicides per million
+denominators = [p / 1000000 for p in total_pop]
+suicides_per_milion = [nation_yr.get_group(yr)["suicides_no"].sum() / d for yr, d in zip(yrs, denominators)]
+
+# Suicides per million people chart
+plt.plot(time, suicides_per_milion)
+plt.xticks([x for x in range(0, len(yrs), 5)], yrs[::5], fontsize=15)
+plt.yticks(fontsize=15)
+plt.xlabel("Year", labelpad=25, fontsize=25)
+plt.ylabel("Suicides per 1,000,000 people", labelpad=50, fontsize=25)
+plt.title(f"Suicides per 1,000,000 people in {country} over the years", fontsize=30, pad=20)
+plt.ylim(bottom=0, top=suicides_per_milion[-1].tolist()[0] + 50)
+fullscreen()
+plt.show()
+
 # Suicides percentage by gender in a certain country chart
 plt.plot(time, nation_male_suicide_ratio, color="blue", label="Male suicides percentage")
 plt.plot(time, nation_female_suicide_ratio, color="purple", label="Female suicides percentage")
-plt.xticks([x for x in range(0, len(yrs), 5)], yrs[::5])
+plt.xticks([x for x in range(0, len(yrs), 5)], yrs[::5], fontsize=15)
 plt.xlabel("Year", labelpad=25, fontsize=25)
 plt.ylabel("% of suicides", labelpad=50, fontsize=25)
 plt.yticks([_ for _ in range(0, 101, 10)], [str(s) + "%" for s in range(0, 101, 10)], fontsize=15)
